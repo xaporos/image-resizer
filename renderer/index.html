@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <link rel="stylesheet" href="css/font-awesome/font-awesome-4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/renderer.js" defer></script>
+    <title>Image Resizer</title>
+</head>
+<body>
+<div class="header">
+    <button class="about-btn">About</button>
+    <button class="icon-btn">
+        <a class="icon fa-2x fa fa-close"></a>
+    </button>
+</div>
+<div class="onProcessingOff" style="display: block;">
+    <div class="add-images-container">
+        <label class="add-images">
+            <img class='add-images-logo' src="./images/icons/image-65.png" alt="logo"/>
+            <span>Select Images To Resize</span>
+            <input id="add-images-input" type="file" accept=".png, .jpg, .jpeg" multiple/>
+        </label>
+    </div>
+    <!-- Form -->
+    <form id="img-form">
+        <select id="dropdown">
+            <option value="0.75">25% Smaller</option>
+            <option value="0.5" selected>50% Smaller</option>
+            <option value="0.25">75% Smaller</option>
+        </select>
+        <button type="submit" class="btn-resize">Resize</button>
+    </form>
+</div>
+<div class="onProcessingOn">
+    <a class="fa-4x fa fa-anchor fa-spin"></a>
+    <p>Processing...</p>
+</div>
+<!--    <p class="text-white text-lg text-center font-mono mt-2"><strong>Output: </strong><span id="output-path"></span></p>-->
+</body>
+</html>

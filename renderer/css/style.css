@@ -1,0 +1,132 @@
+@font-face {
+    font-family: "Kdam";
+    src: url("../../assets/fonts/KdamThmorPro-Regular.ttf");
+}
+
+body {
+    font-family: "Kdam", sans-serif;
+    color: #2B3467;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2B3467;
+    box-shadow: 0 0 8px 2px rgba(43, 52, 103, 0.8);
+}
+
+.about-btn {
+    margin-left: 10px;
+    color: white;
+    background: none;
+    border: none;
+    font-family: "Kdam";
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.about-btn:hover {
+    border-bottom: 1px solid white;
+}
+
+.icon-btn {
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+.icon {
+    color: white;
+    padding: 4px;
+}
+
+.icon:hover {
+    color:crimson;
+    transition: 0.5s;
+}
+
+.add-images-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30%;
+}
+
+.add-images-logo {
+    position: relative;
+    margin-right: 10px;
+}
+
+.add-images {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 20px 2px rgba(43, 52, 103, 0.3);
+}
+
+.add-images:hover {
+    transition: 1s;
+    box-shadow: 2px 2px 20px 2px rgba(43, 52, 103, 0.8);
+}
+
+#img-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#add-images-input {
+    display: none;
+}
+
+#dropdown {
+    font-family: "Kdam", sans-serif;
+    color: #2B3467;
+    appearance: none;
+    border: none;
+    border-radius: 4px;
+    background: none;
+    padding: 9px 10px;
+    margin-right: 30px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 2px 20px 2px rgba(43, 52, 103, 0.4);
+}
+
+#dropdown:hover {
+    box-shadow: 2px 2px 20px 2px rgba(43, 52, 103, 0.8);
+    transition: 1s;
+}
+
+.btn-resize {
+    background-color: #2B3467;
+    font-family: "Kdam", sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 20px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    box-shadow: 2px 2px 20px 2px rgba(43, 52, 103, 0.4);
+}
+
+.btn-resize:hover {
+    box-shadow: 2px 2px 20px 2px rgba(43, 52, 103, 0.8);
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.onProcessingOn {
+    height: 80%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

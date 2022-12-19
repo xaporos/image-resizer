@@ -19,6 +19,7 @@ function createMainWindow() {
         height: 600,
         icon: `${__dirname}/assets/icons/Icon_256x256.png`,
         resizable: isDev,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true,

@@ -4,7 +4,7 @@ const path = require("path");
 const os = require("os");
 const fs = require("fs");
 const resizeImg = require("resize-img");
-const { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, shell, ipcRenderer } = require("electron");
 
 const isDev = process.env.NODE_ENV !== "production";
 const isMac = process.platform === "darwin";
@@ -12,12 +12,14 @@ const isMac = process.platform === "darwin";
 let mainWindow;
 let aboutWindow;
 
+// const close = document.querySelector('#close');
+
 // Main Window
 function createMainWindow() {
     mainWindow = new BrowserWindow({
         width: isDev ? 1000 : 500,
         height: 600,
-        icon: `${__dirname}/assets/icons/Icon_256x256.png`,
+        icon: `${__dirname}/assets/icons/anchor-67.png`,
         resizable: isDev,
         frame: false,
         webPreferences: {
@@ -36,13 +38,15 @@ function createMainWindow() {
     mainWindow.loadFile(path.join(__dirname, "./renderer/index.html"));
 }
 
+ipcMain.on('window:about', createAboutWindow);
+
 // About Window
 function createAboutWindow() {
     aboutWindow = new BrowserWindow({
         width: 300,
         height: 300,
-        title: "About Electron",
-        icon: `${__dirname}/assets/icons/Icon_256x256.png`,
+        title: "About Image Resizer",
+        icon: `${__dirname}/assets/icons/anchor-67.png`,
     });
 
     aboutWindow.loadFile(path.join(__dirname, "./renderer/about.html"));
@@ -51,60 +55,10 @@ function createAboutWindow() {
 // When the app is ready, create the window
 app.on("ready", () => {
     createMainWindow();
-
-    const mainMenu = Menu.buildFromTemplate(menu);
-    Menu.setApplicationMenu(mainMenu);
-
     // Remove variable from memory
     mainWindow.on("closed", () => (mainWindow = null));
+
 });
-
-// Menu template
-const menu = [
-    ...(isMac
-        ? [
-            {
-                label: app.name,
-                submenu: [
-                    {
-                        label: "About",
-                        click: createAboutWindow,
-                    },
-                ],
-            },
-        ]
-        : []),
-    {
-        role: "fileMenu",
-    },
-    ...(!isMac
-        ? [
-            {
-                label: "Help",
-                submenu: [
-                    {
-                        label: "About",
-                        click: createAboutWindow,
-                    },
-                ],
-            },
-        ]
-        : []),
-
-    ...(isDev
-        ? [
-            {
-                label: "Developer",
-                submenu: [
-                    { role: "reload" },
-                    { role: "forcereload" },
-                    { type: "separator" },
-                    { role: "toggledevtools" },
-                ],
-            },
-        ]
-        : []),
-];
 
 // Respond to the resize image event
 ipcMain.on("image:resize", (e, options) => {
@@ -137,10 +91,20 @@ async function resizeImage({ imgPath, height, width, dest, value }) {
         mainWindow.webContents.send("image:done");
 
         // Open the folder in the file explorer
+       
         shell.openPath(dest);
+        
+        
     } catch (err) {
         console.log(err);
     }
+}
+
+ipcMain.on('window:close', closeWindow)
+
+function closeWindow() {
+    let window = BrowserWindow.getFocusedWindow();
+    window.close();
 }
 
 // Quit when all windows are closed.

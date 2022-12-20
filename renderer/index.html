@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="header" style="-webkit-app-region: drag">
-    <button class="about-btn" style="-webkit-app-region: no-drag;">About</button>
-    <button class="icon-btn" style="-webkit-app-region: no-drag;">
+    <button id="about" class="about-btn" style="-webkit-app-region: no-drag;">About</button>
+    <button id="close" class="icon-btn" style="-webkit-app-region: no-drag;">
         <a class="icon fa-2x fa fa-close"></a>
     </button>
 </div>
@@ -28,9 +28,9 @@
     <!-- Form -->
     <form id="img-form">
         <select id="dropdown">
-            <option value="0.75">25% Smaller</option>
-            <option value="0.5" selected>50% Smaller</option>
-            <option value="0.25">75% Smaller</option>
+            <option value="0.5">25% Smaller</option>
+            <option value="0.35" selected>50% Smaller</option>
+            <option value="0.2">75% Smaller</option>
         </select>
         <button type="submit" class="btn-resize">Resize</button>
     </form>

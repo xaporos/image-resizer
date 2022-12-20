@@ -6,6 +6,8 @@ const outputPath = document.querySelector("#output-path");
 const dropdownInput = document.querySelector("#dropdown");
 const onProcessingOff = document.querySelector(".onProcessingOff");
 const onProcessingOn = document.querySelector(".onProcessingOn");
+const closeWindow = document.getElementById('close');
+const aboutWindow = document.getElementById('about');
 
 const imgHeight = [];
 const imgWidth = [];
@@ -121,3 +123,12 @@ form.addEventListener("submit", resizeImage);
 dropdownInput.addEventListener("change", function() {
     resizeValue = this.value
 })
+
+closeWindow.addEventListener('click', (e) => {
+    ipcRenderer.send("window:close")
+})
+
+aboutWindow.addEventListener('click', (e) => {
+    ipcRenderer.send('window:about')
+})
+    

@@ -57,3 +57,5 @@ spec/fixtures/logo.png
 
 #font awesome
 font-awesome
+out/
+about.html

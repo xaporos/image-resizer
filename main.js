@@ -1,26 +1,20 @@
-"use strict";
-
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
 const resizeImg = require("resize-img");
 const { app, BrowserWindow, Menu, ipcMain, shell, ipcRenderer } = require("electron");
 
-const isDev = process.env.NODE_ENV !== "production";
 const isMac = process.platform === "darwin";
 
 let mainWindow;
 let aboutWindow;
 
-// const close = document.querySelector('#close');
-
 // Main Window
 function createMainWindow() {
     mainWindow = new BrowserWindow({
-        width: isDev ? 1000 : 500,
+        width: 500,
         height: 600,
         icon: `${__dirname}/assets/icons/anchor-67.png`,
-        resizable: isDev,
         frame: false,
         webPreferences: {
             nodeIntegration: true,
@@ -28,11 +22,6 @@ function createMainWindow() {
             preload: path.join(__dirname, "preload.js"),
         },
     });
-
-    // Show devtools automatically if in development
-    if (isDev) {
-        mainWindow.webContents.openDevTools();
-    }
 
     // mainWindow.loadURL(`file://${__dirname}/renderer/index.html`);
     mainWindow.loadFile(path.join(__dirname, "./renderer/index.html"));
